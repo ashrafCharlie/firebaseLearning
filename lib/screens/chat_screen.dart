@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
+  static const String id = '/chatscreen';
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -111,7 +112,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     return Center(child: CircularProgressIndicator());
                   }
                   final messages = snapshot.data!.docs;
-        
+
                   return ListView.builder(
                     reverse: true,
                     itemCount: messages.length,
@@ -121,37 +122,45 @@ class _ChatScreenState extends State<ChatScreen> {
                       final isMe =
                           _auth.currentUser?.email == messagesMap['user'];
                       return Align(
-                      
-                        alignment: isMe? Alignment.centerRight:Alignment.centerLeft,
+                        alignment: isMe
+                            ? Alignment.centerRight
+                            : Alignment.centerLeft,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25.0,vertical: 15.0),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 25.0,
+                            vertical: 15.0,
+                          ),
                           child: Column(
                             children: [
-                            
                               Text(messagesMap['user']),
-                              SizedBox(height: 10.0,),
+                              SizedBox(height: 10.0),
                               Container(
                                 decoration: BoxDecoration(
-                                  color: isMe?Colors.blue:Colors.pink,
+                                  color: isMe ? Colors.blue : Colors.pink,
                                   borderRadius: BorderRadius.only(
                                     bottomRight: Radius.circular(20.0),
                                     bottomLeft: Radius.circular(20.0),
-                                    topLeft: !isMe?Radius.circular(0.0):Radius.circular(20.0),
-                                    topRight: isMe?Radius.circular(0.0):Radius.circular(20.0),
-                                  )
+                                    topLeft: !isMe
+                                        ? Radius.circular(0.0)
+                                        : Radius.circular(20.0),
+                                    topRight: isMe
+                                        ? Radius.circular(0.0)
+                                        : Radius.circular(20.0),
+                                  ),
                                 ),
                                 padding: EdgeInsets.all(15.0),
                                 child: Text(messagesMap['text']),
-                              )
+                              ),
                             ],
                           ),
-                        ));
+                        ),
+                      );
                     },
                   );
                 },
               ),
             ),
-        
+
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 8.0,
@@ -165,7 +174,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () async {
                       final currentUser = _auth.currentUser?.email;
                       String textMsg = _msgController.text.trim();
-        
+
                       if (currentUser!.isEmpty || textMsg.isEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Massege sending failed.")),

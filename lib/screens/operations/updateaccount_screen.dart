@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class UpdateaccountScreen extends StatefulWidget {
   const UpdateaccountScreen({super.key});
+   static const String id = '/updateaccountscreen';
 
   @override
   State<UpdateaccountScreen> createState() => _UpdateaccountScreenState();

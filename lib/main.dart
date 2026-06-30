@@ -25,12 +25,12 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute:  "/welcomescreen" ,
       routes: {
-        "/welcomescreen" : (context)=> WelcomeScreen(),
-        "/loginscreen" : (context)=> LoginScreen(),
-        "/registerscreen" : (context)=> RegisterScreen(),
-        "/chatscreen" :(context)=> ChatScreen(),
-        "/resetpassword": (context)=> ResetPassword(),
-        "/updatepassword" : (context)=> UpdateaccountScreen()
+       WelcomeScreen.id : (context)=> WelcomeScreen(),
+       LoginScreen.id : (context)=> LoginScreen(),
+       RegisterScreen.id : (context)=> RegisterScreen(),
+      ChatScreen.id :(context)=> ChatScreen(),
+       ResetPassword.id : (context)=> ResetPassword(),
+      UpdateaccountScreen.id : (context)=> UpdateaccountScreen()
    
       },
 

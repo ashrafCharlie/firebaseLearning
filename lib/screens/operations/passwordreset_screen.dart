@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
+   static const String id = '/passwordresetscreen';
 
   @override
   State<ResetPassword> createState() => _ResetPasswordState();
